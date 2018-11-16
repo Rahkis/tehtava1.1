@@ -5,10 +5,10 @@ import ReactDOM from 'react-dom';
 class App extends React.Component{
     constructor(){
         super()
-        this.state = {
-            huono:0,
+        this.state = {            
             hyva:0,
-            neutraali: 0
+            neutraali: 0,
+            huono:0
         }
     }
 
@@ -29,7 +29,7 @@ asetaNeutraali = () =>{
 
 asetaHuono = () =>{
    this.setState({
-        hyva:this.state.huono +1
+        huono:this.state.huono +1
 })
 }
 
@@ -51,7 +51,7 @@ render() {
             <div> Hyvät:  {this.state.hyva}</div>            
             <div> Neutraalit:  {this.state.neutraali}</div>
             <div> Huonot:  {this.state.huono}</div>
-            
+           
         
     </div>
       )
