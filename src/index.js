@@ -35,6 +35,12 @@ asetaHuono = () =>{
 
 
 render() {
+
+    const summa = this.state.hyva - this.state.huono
+    const kaikki = this.state.hyva + this.state.huono+ this.state.neutraali
+
+    const pos = (this.state.hyva / kaikki)*100
+    const keskiarvo = summa / kaikki
     
     return (
         <div>
@@ -51,7 +57,8 @@ render() {
             <div> Hyvät:  {this.state.hyva}</div>            
             <div> Neutraalit:  {this.state.neutraali}</div>
             <div> Huonot:  {this.state.huono}</div>
-           
+            <div> Keskiarvo:  {keskiarvo.toFixed(2)}</div>
+            <div> Positiivisia:  {pos.toFixed(2)} %</div>
         
     </div>
       )
