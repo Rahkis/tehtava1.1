@@ -22,6 +22,27 @@ const Statistic =({ nimi, arvo, extra})=>{
         <div>{nimi} : {arvo} {extra}</div>
     )
 }
+
+const Results = ({hyva, neutraali, huono}) =>{
+    const summa = hyva - huono
+    const kaikki = hyva + huono+ neutraali
+
+    const pos = (hyva / kaikki)*100
+    const keskiarvo = summa / kaikki
+
+    if(kaikki > 0){
+        return( 
+            <div>
+            <div> <h2>Tulokset</h2></div>
+            <Statistics hyva = {hyva} neutraali = {neutraali} huono={huono} />           
+            <Statistic nimi="Keskiarvo" arvo={keskiarvo.toFixed(2)} />
+            <Statistic nimi="Positiivisia" arvo={pos.toFixed(2)} extra="%" />
+            </div>
+            )
+    }else{
+        return(<div> <h2>Ei arvioita</h2></div>)
+    }
+}
     
 
 
@@ -60,11 +81,7 @@ asetaHuono = () =>{
 
 render() {
 
-    const summa = this.state.hyva - this.state.huono
-    const kaikki = this.state.hyva + this.state.huono+ this.state.neutraali
-
-    const pos = (this.state.hyva / kaikki)*100
-    const keskiarvo = summa / kaikki
+    
     
     return (
         <div>
@@ -86,11 +103,9 @@ render() {
         />
           
         </div>
-        <div><h2>Tulokset </h2> </div>
+        <Results hyva = {this.state.hyva} neutraali = {this.state.neutraali} huono={this.state.huono} /> 
             
-            <Statistics hyva = {this.state.hyva} neutraali = {this.state.neutraali} huono={this.state.huono} />           
-            <Statistic nimi="Keskiarvo" arvo={keskiarvo.toFixed(2)} />
-            <Statistic nimi="Positiivisia" arvo={pos.toFixed(2)} extra="%" />
+            
             
         
     </div>
