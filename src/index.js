@@ -55,7 +55,17 @@ class App extends React.Component{
             neutraali: 0,
             huono:0
         }
-    }   
+    }  
+    
+    asetaPalaute =(palaute)=>{
+        console.log(palaute)
+        console.log(this.state[palaute])
+        return () => {
+            this.setState({
+                [palaute]: this.state[palaute] +1
+            })           
+          }
+    }
 
 asetaHyva = () => {
     this.setState({
@@ -90,15 +100,15 @@ render() {
             </h1>
         <div>
         <Button 
-                handleClick={this.asetaHyva}
+                handleClick={this.asetaPalaute("hyva")}
                  text = "Hyvä"       
         />
         <Button 
-                handleClick={this.asetaNeutraali}
+                handleClick={this.asetaPalaute("neutraali")}
                  text = "Neutraali"       
         />
         <Button 
-                handleClick={this.asetaHuono}
+                handleClick={this.asetaPalaute("huono")}
                  text = "Huono"       
         />
           
