@@ -9,17 +9,19 @@ const Button =({ handleClick, text}) => (
 
 const Statistics = ({hyva, neutraali, huono}) =>{
     return(
-        <div>
-        <div> Hyvät:  {hyva}</div>            
-        <div> Neutraalit:  {neutraali}</div>
-        <div> Huonot:  {huono}</div>
-        </div>
+        <tbody>
+        <tr><td>Hyvät:</td><td>{hyva}</td></tr> 
+        <tr><td>Neutraalit:</td><td>{neutraali}</td></tr>
+        <tr><td>Huonot:</td><td>{huono}</td></tr>          
+        </tbody>
         )
 }
 
 const Statistic =({ nimi, arvo, extra})=>{
     return(
-        <div>{nimi} : {arvo} {extra}</div>
+        <tbody>
+        <tr><td>{nimi}:</td><td>{arvo} {extra}</td></tr>
+        </tbody>
     )
 }
 
@@ -34,9 +36,11 @@ const Results = ({hyva, neutraali, huono}) =>{
         return( 
             <div>
             <div> <h2>Tulokset</h2></div>
+            <table>
             <Statistics hyva = {hyva} neutraali = {neutraali} huono={huono} />           
             <Statistic nimi="Keskiarvo" arvo={keskiarvo.toFixed(2)} />
             <Statistic nimi="Positiivisia" arvo={pos.toFixed(2)} extra="%" />
+            </table>
             </div>
             )
     }else{
@@ -58,8 +62,6 @@ class App extends React.Component{
     }  
     
     asetaPalaute =(palaute)=>{
-        console.log(palaute)
-        console.log(this.state[palaute])
         return () => {
             this.setState({
                 [palaute]: this.state[palaute] +1
